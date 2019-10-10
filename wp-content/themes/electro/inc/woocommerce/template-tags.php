@@ -1527,7 +1527,7 @@ if ( ! function_exists( 'electro_promoted_products' ) ) {
 if ( ! function_exists( 'electro_wrap_order_review' ) ) {
 	function electro_wrap_order_review() {
 		?><div class="order-review-wrapper">
-			<h3 id="order_review_heading_v2"><?php _e( 'Your order', 'electro' ); ?></h3><?php
+			<h3 id="order_review_heading_v2"><?php _e( 'Ваш заказ', 'electro' ); ?></h3><?php
 	}
 }
 
