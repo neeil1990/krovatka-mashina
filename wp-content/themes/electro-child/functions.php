@@ -48,8 +48,10 @@ add_filter('woocommerce_variable_price_html', 'custom_variation_price', 10, 2);
             if($def){
                 $price = $pav['display_price'];         
             }
-        }   
-        return woocommerce_price($price);
+        }
+        
+        if(is_product_category())
+            return woocommerce_price($price);
     }
 
 
