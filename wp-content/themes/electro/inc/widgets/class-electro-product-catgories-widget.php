@@ -132,7 +132,7 @@ if( class_exists( 'WP_Widget' ) ) :
 				}
 
 			} else {
-				$all_categories_text           = apply_filters( 'electro_product_categories_widget_shop_all_categories_text', esc_html__( 'Browse Categories', 'electro' ) );
+				$all_categories_text           = apply_filters( 'electro_product_categories_widget_shop_all_categories_text', esc_html__( 'Просмотр категорий', 'electro' ) );
 				$list_args['title_li']         = sprintf( '<span>%1$s</span>', $all_categories_text );
 				$list_args['depth']            = 2;
 				$list_args['child_of']         = 0;
