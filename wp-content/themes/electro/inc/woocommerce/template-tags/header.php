@@ -27,7 +27,7 @@ if ( ! function_exists( 'electro_header_mini_cart_icon' ) ) {
 
         $header_tooltip_placement = apply_filters( 'electro_header_tooltip_placement', 'bottom' );
 
-        ?><div class="header-icon header-icon__cart <?php if ( ! $disable_header_cart_dropdown ): ?>animate-dropdown dropdown<?php endif; ?>"<?php if ( $header_tooltip_placement ) : ?>data-toggle="tooltip" data-placement="<?php echo esc_attr( $header_tooltip_placement ); ?>" data-title="<?php echo esc_attr( esc_html__( 'Cart', 'electro' ) ); ?>"<?php endif; ?>>
+        ?><div class="header-icon header-icon__cart <?php if ( ! $disable_header_cart_dropdown ): ?>animate-dropdown dropdown<?php endif; ?>"<?php if ( $header_tooltip_placement ) : ?>data-toggle="tooltip" data-placement="<?php echo esc_attr( $header_tooltip_placement ); ?>" data-title="<?php echo esc_attr( esc_html__( 'Корзина', 'electro' ) ); ?>"<?php endif; ?>>
             <a href="<?php echo esc_url( $cart_link ); ?>" <?php if ( ! $disable_header_cart_dropdown ): ?>data-toggle="dropdown"<?php endif; ?>>
                 <i class="<?php echo esc_attr( $header_cart_icon ); ?>"></i>
                 <span class="cart-items-count count header-icon-counter"><?php echo WC()->cart->get_cart_contents_count(); ?></span>

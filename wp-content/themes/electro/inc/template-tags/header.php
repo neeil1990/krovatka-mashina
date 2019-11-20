@@ -70,7 +70,7 @@ if ( ! function_exists( 'electro_compare_header_icon' ) ) {
         if( function_exists( 'electro_get_compare_page_url' ) ) :
             global $yith_woocompare;
             $header_tooltip_placement = apply_filters( 'electro_header_tooltip_placement', 'bottom' );
-        ?><div class="header-icon" <?php if ( $header_tooltip_placement ) : ?>data-toggle="tooltip" data-placement="<?php echo esc_attr( $header_tooltip_placement ); ?>" data-title="<?php echo esc_attr( esc_html__( 'Compare', 'electro' ) ); ?>"<?php endif; ?>>
+        ?><div class="header-icon" <?php if ( $header_tooltip_placement ) : ?>data-toggle="tooltip" data-placement="<?php echo esc_attr( $header_tooltip_placement ); ?>" data-title="<?php echo esc_attr( esc_html__( 'Сравнить', 'electro' ) ); ?>"<?php endif; ?>>
             <a href="<?php echo esc_attr( electro_get_compare_page_url() ); ?>">
                 <i class="<?php echo esc_attr( apply_filters( 'electro_compare_icon', 'ec ec-compare' ) ); ?>"></i>
                 <?php if ( apply_filters( 'electro_show_compare_count', false ) ) : ?>
@@ -89,7 +89,7 @@ if ( ! function_exists( 'electro_wishlist_header_icon' ) ) {
     function electro_wishlist_header_icon() {
         if ( function_exists( 'electro_get_wishlist_url' ) ) :
             $header_tooltip_placement = apply_filters( 'electro_header_tooltip_placement', 'bottom' );
-    ?><div class="header-icon" <?php if ( $header_tooltip_placement ): ?>data-toggle="tooltip" data-placement="<?php echo esc_attr( $header_tooltip_placement ); ?>" data-title="<?php echo esc_attr( esc_html__( 'Wishlist', 'electro' ) ); ?>"<?php endif; ?>>
+    ?><div class="header-icon" <?php if ( $header_tooltip_placement ): ?>data-toggle="tooltip" data-placement="<?php echo esc_attr( $header_tooltip_placement ); ?>" data-title="<?php echo esc_attr( esc_html__( 'Отложить', 'electro' ) ); ?>"<?php endif; ?>>
         <a href="<?php echo esc_attr( electro_get_wishlist_url() ); ?>">
             <i class="<?php echo esc_attr( apply_filters( 'electro_wishlist_icon', 'ec ec-favorites' ) ); ?>"></i>
             <?php if ( apply_filters( 'electro_show_wishlist_count', false ) ) : ?>
