@@ -20,7 +20,7 @@ remove_action( 'woocommerce_after_main_content', 			'woocommerce_output_content_
 remove_action( 'woocommerce_sidebar', 						'woocommerce_get_sidebar', 						10 );
 add_action( 'woocommerce_before_main_content', 				'electro_before_wc_content', 					10 );
 add_action( 'woocommerce_before_main_content', 				'electro_before_product_archive_content', 		20 );
-add_action( 'woocommerce_before_main_content',				'electro_shop_archive_jumbotron',				50 );
+
 add_action( 'woocommerce_after_main_content', 				'electro_after_wc_content', 					10 );
 
 require_once get_template_directory() . '/inc/woocommerce/template-hooks/header.php';
@@ -50,6 +50,7 @@ add_action( 'woocommerce_after_shop_loop',					'electro_shop_control_bar_bottom'
 add_action( 'electro_shop_control_bar_bottom',				'woocommerce_result_count',						20 );
 add_action( 'electro_shop_control_bar_bottom',				'woocommerce_pagination',						30 );
 add_action( 'woocommerce_after_shop_loop',                  'electro_shop_bottom_archive_jumbotron',        95 );
+add_action( 'woocommerce_after_shop_loop',				'electro_shop_archive_jumbotron',				100 );
 
 /**
  * Product Item

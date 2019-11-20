@@ -387,7 +387,7 @@ if ( ! function_exists( 'electro_featured_products_carousel' ) ) {
 		);
 
 		$featured = WC_Shortcodes::featured_products( $args );
-		electro_products_carousel( $featured, esc_html__( 'Recommended Products', 'electro' ), $columns );
+		electro_products_carousel( $featured, esc_html__( 'Рекомендуемые товары', 'electro' ), $columns );
 	}
 }
 
