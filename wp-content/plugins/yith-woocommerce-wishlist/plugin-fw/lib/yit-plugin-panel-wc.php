@@ -588,7 +588,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
 
                 $value = apply_filters( 'yith_plugin_fw_wc_panel_pre_field_value', null, $field );
                 if ( is_null( $value ) ) {
-                    if ( 'toggle-element' === $field[ 'type' ] ) {
+                    if ( 'toggle-element' === $field[ 'type' ] || 'toggle-element-fixed' === $field[ 'type' ] ) {
                         $value = get_option( $field[ 'id' ], $field[ 'default' ] );
                     } else {
                         $value = WC_Admin_Settings::get_option( $field[ 'id' ], $field[ 'default' ] );
@@ -608,6 +608,13 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * @author Emanuela Castorina
          */
         public function save_toggle_element_options() {
+
+        	check_ajax_referer( 'save-toggle-element', 'security' );
+
+        	if( ! current_user_can( $this->settings['capability'] ) ){
+        		wp_die( -1 );
+	        }
+
             $posted      = $_POST;
             $tabs        = $this->get_available_tabs();
             $yit_options = $this->get_main_array_options();
@@ -615,7 +622,7 @@ if ( !class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
             $option_id   = isset( $_REQUEST[ 'toggle_id' ] ) ? $_REQUEST[ 'toggle_id' ] : '';
             $updated     = false;
 
-            if ( !empty( $yit_options[ $current_tab ] ) && !empty( $option_id ) ) {
+            if ( ! empty( $yit_options[ $current_tab ] ) && ! empty( $option_id ) ) {
 
                 $tab_options = $yit_options[ $current_tab ];
                 foreach ( $tab_options as $key => $item ) {

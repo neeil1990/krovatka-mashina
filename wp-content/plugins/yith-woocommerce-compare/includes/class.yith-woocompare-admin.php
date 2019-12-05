@@ -150,14 +150,15 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 			$args = array(
 				'create_menu_page' => true,
 				'parent_slug'      => '',
-				'page_title'       => _x( 'Compare', 'Admin Plugin Name', 'yith-woocommerce-compare' ),
+				'page_title'       => _x( 'YITH WooCommerce Compare', 'Admin Plugin Name', 'yith-woocommerce-compare' ),
 				'menu_title'       => _x( 'Compare', 'Admin Plugin Name', 'yith-woocommerce-compare' ),
 				'capability'       => 'manage_options',
 				'parent'           => '',
 				'parent_page'      => 'yith_plugin_panel',
 				'page'             => $this->_panel_page,
 				'admin-tabs'       => apply_filters( 'yith_woocompare_admin_tabs', $admin_tabs ),
-				'options-path'     => YITH_WOOCOMPARE_DIR . '/plugin-options'
+				'options-path'     => YITH_WOOCOMPARE_DIR . '/plugin-options',
+                'class'            => yith_set_wrapper_class()
 			);
 
 

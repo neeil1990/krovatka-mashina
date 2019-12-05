@@ -175,6 +175,15 @@ class Cyr_To_Lat_Settings {
 				'supplemental' => '',
 				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'mk_MK' ),
 			),
+			'sr_RS' => array(
+				'label'        => __( 'sr_RS Table', 'cyr2lat' ),
+				'section'      => 'sr_RS_section',
+				'type'         => 'table',
+				'placeholder'  => '',
+				'helper'       => '',
+				'supplemental' => '',
+				'default'      => Cyr_To_Lat_Conversion_Tables::get( 'sr_RS' ),
+			),
 			'ka_GE' => array(
 				'label'        => __( 'ka_GE Table', 'cyr2lat' ),
 				'section'      => 'ka_GE_section',
@@ -309,7 +318,7 @@ class Cyr_To_Lat_Settings {
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="BENCPARA8S224">
 					<input
-							type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+							type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
 							name="submit" alt="PayPal - The safer, easier way to pay online!">
 					<img
 							alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
@@ -364,6 +373,12 @@ class Cyr_To_Lat_Settings {
 		add_settings_section(
 			'mk_MK_section',
 			__( 'mk_MK Table', 'cyr2lat' ),
+			array( $this, 'cyr_to_lat_section' ),
+			self::PAGE
+		);
+		add_settings_section(
+			'sr_RS_section',
+			__( 'sr_RS Table', 'cyr2lat' ),
 			array( $this, 'cyr_to_lat_section' ),
 			self::PAGE
 		);
@@ -720,6 +735,22 @@ class Cyr_To_Lat_Settings {
 			false,
 			dirname( plugin_basename( CYR_TO_LAT_FILE ) ) . '/languages/'
 		);
+	}
+
+	/**
+	 * Get transliteration table.
+	 *
+	 * @return string
+	 */
+	public function get_table() {
+		// List of locales: https://make.wordpress.org/polyglots/teams/.
+		$locale = get_locale();
+		$table  = $this->get_option( $locale );
+		if ( empty( $table ) ) {
+			$table = $this->get_option( 'iso9' );
+		}
+
+		return $table;
 	}
 
 	/**

@@ -108,6 +108,7 @@ define( 'GTM4WP_OPTION_INTEGRATE_WCUSESKU', 'integrate-woocommerce-remarketing-u
 define( 'GTM4WP_OPTION_INTEGRATE_WCUSEFULLCATEGORYPATH', 'integrate-woocommerce-use-full-category-path' );
 define( 'GTM4WP_OPTION_INTEGRATE_WCREMPRODIDPREFIX', 'integrate-woocommerce-remarketing-productidprefix' );
 define( 'GTM4WP_OPTION_INTEGRATE_WCCUSTOMERDATA', 'integrate-woocommerce-customer-data' );
+define( 'GTM4WP_OPTION_INTEGRATE_WCORDERDATA', 'integrate-woocommerce-order-data' );
 define( 'GTM4WP_OPTION_INTEGRATE_WCEXCLUDETAX', 'integrate-woocommerce-exclude-tax' );
 define( 'GTM4WP_OPTION_INTEGRATE_WCEXCLUDESHIPPING', 'integrate-woocommerce-exclude-shipping' );
 define( 'GTM4WP_OPTION_INTEGRATE_WCNOORDERTRACKEDFLAG', 'integrate-woocommerce-do-not-use-order-tracked-flag' );
@@ -124,6 +125,8 @@ define( 'GTM4WP_PLACEMENT_FOOTER', 0 );
 define( 'GTM4WP_PLACEMENT_BODYOPEN', 1 );
 define( 'GTM4WP_PLACEMENT_BODYOPEN_AUTO', 2 );
 define( 'GTM4WP_PLACEMENT_OFF', 3 );
+
+global $gtm4wp_options, $gtm4wp_defaultoptions;
 
 $gtm4wp_options = array();
 
@@ -235,6 +238,7 @@ $gtm4wp_defaultoptions = array(
 	GTM4WP_OPTION_INTEGRATE_WCUSEFULLCATEGORYPATH => false,
 	GTM4WP_OPTION_INTEGRATE_WCREMPRODIDPREFIX     => '',
 	GTM4WP_OPTION_INTEGRATE_WCCUSTOMERDATA        => false,
+	GTM4WP_OPTION_INTEGRATE_WCORDERDATA           => false,
 	GTM4WP_OPTION_INTEGRATE_WCEXCLUDETAX          => false,
 	GTM4WP_OPTION_INTEGRATE_WCEXCLUDESHIPPING     => false,
 	GTM4WP_OPTION_INTEGRATE_WCNOORDERTRACKEDFLAG  => false,
@@ -265,7 +269,21 @@ function gtm4wp_reload_options() {
 		unset( $storedoptions[ GTM4WP_OPTION_INTEGRATE_WOOCOMMERCE ] );
 	}
 
-	return array_merge( $gtm4wp_defaultoptions, $storedoptions );
+	$return_options = array_merge( $gtm4wp_defaultoptions, $storedoptions );
+
+	if ( defined( 'GTM4WP_HARDCODED_GTM_ID' ) ) {
+		$return_options[ GTM4WP_OPTION_GTM_CODE ] = GTM4WP_HARDCODED_GTM_ID;
+	}
+
+	if ( defined( 'GTM4WP_HARDCODED_GTM_ENV_AUTH' ) ) {
+		$return_options[ GTM4WP_OPTION_ENV_GTM_AUTH ] = GTM4WP_HARDCODED_GTM_ENV_AUTH;
+	}
+
+	if ( defined( 'GTM4WP_HARDCODED_GTM_ENV_PREVIEW' ) ) {
+		$return_options[ GTM4WP_OPTION_ENV_GTM_PREVIEW ] = GTM4WP_HARDCODED_GTM_ENV_PREVIEW;
+	}
+
+	return $return_options;
 }
 
 function gtp4wp_debug_file( $debug_data ) {

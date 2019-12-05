@@ -1008,6 +1008,12 @@ if ( !function_exists( 'yith_plugin_fw_get_field' ) ) {
 
         $field_template = yith_plugin_fw_get_field_template_path( $field );
 
+        if ( !isset( $field[ 'id' ] ) ) {
+            static $field_number = 1;
+            $field[ 'id' ] = "yith-plugin-fw-field__{$field_number}";
+            $field_number++;
+        }
+
         if ( $field_template ) {
             if ( !$echo )
                 ob_start();
@@ -1375,5 +1381,16 @@ if ( ! function_exists( 'yith_plugin_fw_remove_duplicate_classes' ) ) {
 		}
 
 		return $classes;
+	}
+}
+
+if ( ! function_exists( 'yith_plugin_fw_add_requirements' ) ) {
+
+	function yith_plugin_fw_add_requirements( $plugin_name, $requirements ) {
+		if ( ! empty( $requirements ) ) {
+			YITH_System_Status()->add_requirements( $plugin_name, $requirements );
+
+
+		}
 	}
 }

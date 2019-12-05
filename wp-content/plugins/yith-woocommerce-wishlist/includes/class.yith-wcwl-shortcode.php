@@ -329,11 +329,12 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 				$share_googleplus_enabled = get_option( 'yith_wcwl_share_googleplus' ) == 'yes';
 				$share_email_enabled = get_option( 'yith_wcwl_share_email' ) == 'yes';
 				$share_whatsapp_enabled = get_option( 'yith_wcwl_share_whatsapp' ) == 'yes';
+				$share_url_enabled = get_option( 'yith_wcwl_share_url' ) == 'yes';
 				$show_date_added = get_option( 'yith_wcwl_show_dateadded' ) == 'yes';
 				$show_add_to_cart = get_option( 'yith_wcwl_add_to_cart_show' ) == 'yes';
 				$repeat_remove_button = get_option( 'yith_wcwl_repeat_remove_button' ) == 'yes';
 
-				$share_enabled = $share_facebook_enabled || $share_twitter_enabled || $share_pinterest_enabled || $share_googleplus_enabled || $share_email_enabled || $share_whatsapp_enabled;
+				$share_enabled = $share_facebook_enabled || $share_twitter_enabled || $share_pinterest_enabled || $share_googleplus_enabled || $share_email_enabled || $share_whatsapp_enabled || $share_url_enabled;
 
 				$additional_params = array(
 					// wishlist items
@@ -397,6 +398,7 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 						'share_googleplus_enabled' => $share_googleplus_enabled,
 						'share_email_enabled' => $share_email_enabled,
 						'share_whatsapp_enabled' => $share_whatsapp_enabled,
+						'share_url_enabled' => $share_url_enabled,
 						'share_title' => $share_title,
 						'share_link_url' => $share_link_url,
 						'share_link_title' => $share_links_title,
@@ -467,9 +469,9 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 
 			$browse_wishlist = get_option( 'yith_wcwl_browse_wishlist_text' );
 
-			$already_in_wishlist = get_option( 'yith_wcwl_already_in_wishlist_text' );
+			$already_in_wishlist = apply_filters( 'yith_wcwl_product_already_in_wishlist_text_button', get_option( 'yith_wcwl_already_in_wishlist_text' ));
 
-			$product_added = get_option( 'yith_wcwl_product_added_text' );
+			$product_added = apply_filters( 'yith_wcwl_product_added_to_wishlist_message_button', get_option( 'yith_wcwl_product_added_text' ));
 
 			// button class
 			$classes = apply_filters( 'yith_wcwl_add_to_wishlist_button_classes', get_option( 'yith_wcwl_use_button' ) == 'yes' ? 'add_to_wishlist single_add_to_wishlist button alt' : 'add_to_wishlist' );

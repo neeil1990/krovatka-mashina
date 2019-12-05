@@ -4,8 +4,8 @@ Donate link: https://gtm4wp.com/
 Tags: google tag manager, tag manager, gtm, google, adwords, google adwords, google ads, adwords remarketing, google ads remarketing, remarketing, google analytics, analytics, facebook ads, facebook remarketing, facebook pixel, google optimize, personalisation
 Requires at least: 3.4.0
 Requires PHP: 5.6
-Tested up to: 5.2.2
-Stable tag: 1.10.1
+Tested up to: 5.2.4
+Stable tag: 1.11.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -258,9 +258,59 @@ If you or your social plugin inserts the Facebook buttons using IFRAMEs (like So
 
 == Changelog ==
 
+= 1.11.2 =
+
+WARNING!
+If you are upgrading directly from v1.10.x, please read the changelog of v1.11 since it includes many important notices!
+
+No change in plugin code, WP.org deployment of v1.11.1 included wrong directories
+
+= 1.11.1 =
+
+WARNING!
+If you are upgrading directly from v1.10.x, please read the changelog of v1.11 since it includes many important notices!
+
+* Fixed: PHP notice about undefined order_items variable if the new 'Order data in data layer' is turned off
+* Fixed: PHP notice about missing brand array key if no brand taxonomy is selected in GTM4WP options
+
+= 1.11 =
+
+WARNING!
+Please read the changelog very carefully as there are many important changes and removed features which could need your attention before updating!
+
+* Added Oxygen Builder and Beaver Builder Theme support - you can now use the codeless placement option without issues
+* Added ability to fix the Google Tag Manager ID and GTM Environment parameters in wp-config.php. To use it, create PHP constants with the names
+** GTM4WP_HARDCODED_GTM_ID
+** GTM4WP_HARDCODED_GTM_ENV_AUTH
+** GTM4WP_HARDCODED_GTM_ENV_PREVIEW
+* Added support for WooCommerce Grouped Products
+* Added new WooCommerce option to add all order data into the data layer on the order reveived page
+** This includes personal data of the customer -> you need to ensure this is used in a privacy friendly and compliant way!
+** This order data will be always present on the order received page, even if the page is reloaded or later revisited!
+* Removed several unofficial data layer variables on the WooCommerce order received page as they can be read using the new order data option
+** transactionDate
+** transactionType
+** transactionPaymentType
+** transactionShippingMethod
+** transactionPromoCode
+* Improved: price reporting with the WooCommerce enhanced ecommerce integration now follows the option set with the 'Display prices in the shop' option of WooCommerce
+* Improved: from WooCommerce 3.7 WC_Abstract_Order::get_used_coupons() was replaced with WC_Abstract_Order::get_coupon_codes() which is now used if WC 3.7+ is detected
+* Improved: use localStorage for WooCommerce duplicate transaction tracking prevention if available. Should be work with Safari at least for now.
+* Fixed: WooCommerce duplicate transaction tracking prevention's cookie was set to expire on session end, now adds 1 year.
+* Deprecated data layer variable productIsVariable. Use the new productType data layer variable which will equal to simple, variable, grouped or external depending on the type of the product shown
+* Fixed: Wrong lookup for product brand name if Use SKU instead of product ID option was turned on
+* Fixed: Wrong lookup for product brand name for variable products
+* Fixed: check if $woo->customer is initialized
+* Fixed: no checkout step reported on WooCommerce checkout page if the user has accepted the default selection of the payment and shipping methods
+
+! Planned deprecation of support for WooCommerce 2.x-3.1.x with next plugin version !
+! Planned deprecation of support for WordPress 4.x with next plugin version !
+
 = 1.10.1 =
+
 * Fixed: wrong cookie name was used with the newly introduced double transaction tracking protection while setting the cookie
 * Fixed: double transaction tracking JavaScript code is now only included on the order received page
+* Fixed: product impressions not properly reported if Products per impressions were set to 0
 * Fixed: replaced all references to AdWords to Google Ads
 
 = 1.10 =
@@ -601,6 +651,18 @@ Please report all bugs found in my plugin using the [contact form on my website]
 * First beta release
 
 == Upgrade Notice ==
+
+= 1.11.2 =
+
+No change in plugin code, WP.org deployment of v1.11.1 included wrong directories
+
+= 1.11.1 =
+
+WooCommerce integration related fixes.
+
+= 1.11 =
+
+Please read the changelog very carefully as there are many important changes and removed features which could need your attention before updating!
 
 = 1.10.1 =
 

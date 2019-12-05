@@ -1033,7 +1033,8 @@ if ( ! class_exists( 'YITH_WCWL_Admin_Init' ) ) {
 							'title' => 'Get Support and Pro Features'
 						)
 					),
-					'id'      => 'yith_wcwl_general_videobox'
+					'id'      => 'yith_wcwl_general_videobox',
+                    'value' => ''
 				),
 
 				'general_section_start' => array(
@@ -1293,6 +1294,13 @@ if ( ! class_exists( 'YITH_WCWL_Admin_Init' ) ) {
                     'id'      => 'yith_wcwl_share_whatsapp',
                     'default' => 'yes',
                     'type'    => 'checkbox'
+                ),
+				'share_by_url' => array(
+					'name'    => __( 'Share by Url', 'yith-woocommerce-wishlist' ),
+					'desc'    => __( 'Show "Share Url" field on wishlist page', 'yith-woocommerce-wishlist' ),
+					'id'      => 'yith_wcwl_share_url',
+					'default' => 'no',
+					'type'    => 'checkbox'
                 ),
 				'socials_title' => array(
 					'name'    => __( 'Social title', 'yith-woocommerce-wishlist' ),

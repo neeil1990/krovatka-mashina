@@ -38,6 +38,7 @@ add_filter('woocommerce_variable_price_html', 'custom_variation_price', 10, 2);
 
     function custom_variation_price( $price, $product ) {
 
+		$arPrice = [];
         foreach($product->get_available_variations() as $pav){
             $def=true;
             foreach($product->get_variation_default_attributes() as $defkey=>$defval){
@@ -48,9 +49,11 @@ add_filter('woocommerce_variable_price_html', 'custom_variation_price', 10, 2);
             if($def){
                 $price = $pav['display_price'];         
             }
+			
+			$arPrice[] = $pav['display_price'];
         }
-        
-        if(is_product_category())
+		
+        if(is_product_category() || count(array_unique($arPrice)) == 1 || is_search())
             return woocommerce_price($price);
     }
 
